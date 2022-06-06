@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166DF763284E66760015C16C /* FileManager-DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166DF762284E66750015C16C /* FileManager-DataManager.swift */; };
+		1681983B284CB574005490AF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681983A284CB574005490AF /* ImagePicker.swift */; };
 		168B5C6D284620DE00C99A2B /* RememberThemAllApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C6C284620DE00C99A2B /* RememberThemAllApp.swift */; };
 		168B5C6F284620DE00C99A2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C6E284620DE00C99A2B /* ContentView.swift */; };
 		168B5C71284620E100C99A2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168B5C70284620E100C99A2B /* Assets.xcassets */; };
 		168B5C74284620E100C99A2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168B5C73284620E100C99A2B /* Preview Assets.xcassets */; };
+		168B5C7C2846225800C99A2B /* PhotoBank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C7A2846225800C99A2B /* PhotoBank.xcdatamodeld */; };
+		168B5C7F2846239000C99A2B /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C7D2846239000C99A2B /* Photo+CoreDataClass.swift */; };
+		168B5C802846239000C99A2B /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C7E2846239000C99A2B /* Photo+CoreDataProperties.swift */; };
+		168B5C82284630F900C99A2B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C81284630F900C99A2B /* DataController.swift */; };
+		168B5C84284698B300C99A2B /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C83284698B300C99A2B /* AddPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		166DF762284E66750015C16C /* FileManager-DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DataManager.swift"; sourceTree = "<group>"; };
+		1681983A284CB574005490AF /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		168B5C69284620DD00C99A2B /* RememberThemAll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RememberThemAll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		168B5C6C284620DE00C99A2B /* RememberThemAllApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberThemAllApp.swift; sourceTree = "<group>"; };
 		168B5C6E284620DE00C99A2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		168B5C70284620E100C99A2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		168B5C73284620E100C99A2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		168B5C7B2846225800C99A2B /* PhotoBank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoBank.xcdatamodel; sourceTree = "<group>"; };
+		168B5C7D2846239000C99A2B /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		168B5C7E2846239000C99A2B /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		168B5C81284630F900C99A2B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		168B5C83284698B300C99A2B /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +49,8 @@
 		168B5C60284620DD00C99A2B = {
 			isa = PBXGroup;
 			children = (
+				168B5C7D2846239000C99A2B /* Photo+CoreDataClass.swift */,
+				168B5C7E2846239000C99A2B /* Photo+CoreDataProperties.swift */,
 				168B5C6B284620DD00C99A2B /* RememberThemAll */,
 				168B5C6A284620DD00C99A2B /* Products */,
 			);
@@ -53,6 +69,11 @@
 			children = (
 				168B5C6C284620DE00C99A2B /* RememberThemAllApp.swift */,
 				168B5C6E284620DE00C99A2B /* ContentView.swift */,
+				166DF762284E66750015C16C /* FileManager-DataManager.swift */,
+				168B5C83284698B300C99A2B /* AddPhotoView.swift */,
+				1681983A284CB574005490AF /* ImagePicker.swift */,
+				168B5C81284630F900C99A2B /* DataController.swift */,
+				168B5C7A2846225800C99A2B /* PhotoBank.xcdatamodeld */,
 				168B5C70284620E100C99A2B /* Assets.xcassets */,
 				168B5C72284620E100C99A2B /* Preview Content */,
 			);
@@ -138,7 +159,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				168B5C6F284620DE00C99A2B /* ContentView.swift in Sources */,
+				168B5C82284630F900C99A2B /* DataController.swift in Sources */,
+				168B5C84284698B300C99A2B /* AddPhotoView.swift in Sources */,
+				166DF763284E66760015C16C /* FileManager-DataManager.swift in Sources */,
 				168B5C6D284620DE00C99A2B /* RememberThemAllApp.swift in Sources */,
+				168B5C7F2846239000C99A2B /* Photo+CoreDataClass.swift in Sources */,
+				1681983B284CB574005490AF /* ImagePicker.swift in Sources */,
+				168B5C802846239000C99A2B /* Photo+CoreDataProperties.swift in Sources */,
+				168B5C7C2846225800C99A2B /* PhotoBank.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +367,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		168B5C7A2846225800C99A2B /* PhotoBank.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				168B5C7B2846225800C99A2B /* PhotoBank.xcdatamodel */,
+			);
+			currentVersion = 168B5C7B2846225800C99A2B /* PhotoBank.xcdatamodel */;
+			path = PhotoBank.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 168B5C61284620DD00C99A2B /* Project object */;
 }
