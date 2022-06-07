@@ -15,17 +15,20 @@ struct AddPhotoView: View {
     
     var body: some View {
         
-        Form {
+        VStack {
             Image(uiImage: photo!)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 80, height: 80)
-            TextField("Name", text: $name)
-            Section {
-                Button("Save") {
-                    save()
-                }
+                .frame(width: 350, height: 350)
+                .padding([.top, .bottom])
+            Form {
+                TextField("Name", text: $name)
             }
+            
+            Button("Save") {
+                save()
+            }
+            .padding()
         }
     }
     

@@ -20,19 +20,21 @@ struct ContentView: View {
             List {
                 ForEach(people, id:\.name) {photo in
                     NavigationLink {
-                        Text(photo.wrappedName)
+                        DetailedView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: DataManager.load(from: photo.wrappedFilename)))
                     } label: {
                         HStack {
                             Image(uiImage: DataManager.load(from: photo.wrappedFilename))
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
+                                .background(Color(hue: 0.7,saturation: 0.1,brightness: 1))
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
                             Text(photo.wrappedName)
                         }
                     }
                 }
             }
-            .navigationTitle("Who Are Them?")
+            .navigationTitle("Who Are Them All?")
             .navigationBarItems(trailing:
                 HStack {
                     Button {
