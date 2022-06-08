@@ -18,20 +18,26 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(people, id:\.name) {photo in
-                    NavigationLink {
-                        DetailedView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: DataManager.load(from: photo.wrappedFilename)))
-                    } label: {
-                        HStack {
-                            Image(uiImage: DataManager.load(from: photo.wrappedFilename))
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                                .background(Color(hue: 0.7,saturation: 0.1,brightness: 1))
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                            Text(photo.wrappedName)
+                if people.count == 0 {
+                    Text("Your list is empty")
+                        .foregroundColor(.secondary)
+                } else {
+                    ForEach(people, id:\.name) {photo in
+                        NavigationLink {
+                            DetailView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: DataManager.load(from: photo.wrappedFilename)))
+                        } label: {
+                            HStack {
+                                Image(uiImage: DataManager.load(from: photo.wrappedFilename))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 40)
+                                    .background(Color(hue: 0.7,saturation: 0.1,brightness: 1))
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                Text(photo.wrappedName)
+                            }
                         }
                     }
+                    .onDelete(perform: deletePhotos)
                 }
             }
             .navigationTitle("Who Are Them All?")
@@ -60,6 +66,17 @@ struct ContentView: View {
                     isShowingAddView.toggle()
                 }
             }
+        }
+    }
+    
+    func deletePhotos(at offsets: IndexSet) {
+        for offset in offsets {
+            let photo = people[offset]
+            moc.delete(photo)
+            
+            // how to remove image file?
+            
+            try? moc.save()
         }
     }
 }

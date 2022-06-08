@@ -17,7 +17,7 @@ class DataController: ObservableObject {
                 fatalError(error.localizedDescription)
             }
             
-            // merge policy for duplicates
+            // merge policy for duplicates - duplicates are nearly impossible
             //self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
     }
