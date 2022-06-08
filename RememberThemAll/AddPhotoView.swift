@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AddPhotoView: View {
     @Environment(\.managedObjectContext) var moc

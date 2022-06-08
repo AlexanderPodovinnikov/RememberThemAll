@@ -33,4 +33,8 @@ struct DataManager {
             try? jpegData.write(to: savePath, options: [.atomic, .completeFileProtection])
         }
     }
+    
+    static func erase(path: String) {
+        //TODO
+    }
 }

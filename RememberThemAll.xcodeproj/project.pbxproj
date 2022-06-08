@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166D863628511CC200DBDF43 /* FilteredPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166D863528511CC200DBDF43 /* FilteredPeople.swift */; };
 		166DF763284E66760015C16C /* FileManager-DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166DF762284E66750015C16C /* FileManager-DataManager.swift */; };
 		166DF765284F907A0015C16C /* PresentedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166DF764284F907A0015C16C /* PresentedPhoto.swift */; };
 		166DF767284F92E70015C16C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166DF766284F92E70015C16C /* DetailView.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		166D863528511CC200DBDF43 /* FilteredPeople.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredPeople.swift; sourceTree = "<group>"; };
 		166DF762284E66750015C16C /* FileManager-DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DataManager.swift"; sourceTree = "<group>"; };
 		166DF764284F907A0015C16C /* PresentedPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentedPhoto.swift; sourceTree = "<group>"; };
 		166DF766284F92E70015C16C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				168B5C6C284620DE00C99A2B /* RememberThemAllApp.swift */,
 				168B5C6E284620DE00C99A2B /* ContentView.swift */,
+				166D863528511CC200DBDF43 /* FilteredPeople.swift */,
 				166DF766284F92E70015C16C /* DetailView.swift */,
 				166DF764284F907A0015C16C /* PresentedPhoto.swift */,
 				166DF762284E66750015C16C /* FileManager-DataManager.swift */,
@@ -175,6 +178,7 @@
 				1681983B284CB574005490AF /* ImagePicker.swift in Sources */,
 				168B5C802846239000C99A2B /* Photo+CoreDataProperties.swift in Sources */,
 				168B5C7C2846225800C99A2B /* PhotoBank.xcdatamodeld in Sources */,
+				166D863628511CC200DBDF43 /* FilteredPeople.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
