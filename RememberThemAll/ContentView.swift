@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [], predicate: nil) var people: FetchedResults<Photo>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)], predicate: nil) var people: FetchedResults<Photo>
     
     @State var newImage: UIImage?
     @State var isShowingImagePicker = false
@@ -43,11 +43,11 @@ struct ContentView: View {
             .navigationTitle("Who Are Them All?")
             .navigationBarItems(trailing:
                 HStack {
-                    Button {
-                        // isShowingSortOptions.toggle()
-                    } label: {
-                        Image(systemName: "arrow.up.arrow.down")
-                    }
+//                    Button {
+//                        // isShowingSortOptions.toggle()
+//                    } label: {
+//                        Image(systemName: "arrow.up.arrow.down")
+//                    }
                     Button {
                         isShowingImagePicker.toggle()
                     } label: {
@@ -76,7 +76,9 @@ struct ContentView: View {
             
             // how to remove image file?
             
-            try? moc.save()
+            if moc.hasChanges {
+                try? moc.save()
+            }
         }
     }
 }
