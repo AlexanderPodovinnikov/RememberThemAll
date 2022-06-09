@@ -11,8 +11,6 @@ import PhotosUI
 struct ImagePicker: UIViewControllerRepresentable {
     
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        
-        
         var parent: ImagePicker
         
         init(_ parent: ImagePicker) {

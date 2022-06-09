@@ -9,45 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)], predicate: nil) var people: FetchedResults<Photo>
     
     @State var newImage: UIImage?
     @State var isShowingImagePicker = false
     @State var isShowingAddView = false
+    @State var searchText = ""
     
     var body: some View {
         NavigationView {
-            List {
-                if people.count == 0 {
-                    Text("Your list is empty")
-                        .foregroundColor(.secondary)
-                } else {
-                    ForEach(people, id:\.name) {photo in
-                        NavigationLink {
-                            DetailView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: DataManager.load(from: photo.wrappedFilename)))
-                        } label: {
-                            HStack {
-                                Image(uiImage: DataManager.load(from: photo.wrappedFilename))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 40, height: 40)
-                                    .background(Color(hue: 0.7,saturation: 0.1,brightness: 1))
-                                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                                Text(photo.wrappedName)
-                            }
-                        }
-                    }
-                    .onDelete(perform: deletePhotos)
-                }
+            VStack {
+                FilteredPeople(filter: searchText)
+                    .searchable(text: $searchText)
             }
             .navigationTitle("Who Are Them All?")
             .navigationBarItems(trailing:
                 HStack {
-//                    Button {
-//                        // isShowingSortOptions.toggle()
-//                    } label: {
-//                        Image(systemName: "arrow.up.arrow.down")
-//                    }
+//                    Image(systemName: "magnifyingglass")
+//                    TextField("Search for...", text: $searchText)
+                    
                     Button {
                         isShowingImagePicker.toggle()
                     } label: {
@@ -65,19 +44,6 @@ struct ContentView: View {
                 if image != nil {
                     isShowingAddView.toggle()
                 }
-            }
-        }
-    }
-    
-    func deletePhotos(at offsets: IndexSet) {
-        for offset in offsets {
-            let photo = people[offset]
-            moc.delete(photo)
-            
-            // how to remove image file?
-            
-            if moc.hasChanges {
-                try? moc.save()
             }
         }
     }
