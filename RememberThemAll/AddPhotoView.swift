@@ -14,22 +14,44 @@ struct AddPhotoView: View {
     @State private var name = ""
     var photo: UIImage?
     
+    struct PhotoView: View {
+        var parent: AddPhotoView
+        var body: some View {
+            Group {
+                Image(uiImage: parent.photo!)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250, height: 250) //TODO Size
+                    .padding([.top, .bottom])
+                Form {
+                    TextField("Name", text: parent.$name)
+                }
+            }
+        }
+        init(_ parent: AddPhotoView) {
+            self.parent = parent
+        }
+    }
+    
     var body: some View {
         
-        VStack {
-            Image(uiImage: photo!)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 250, height: 250) //TODO Size, textfield when keyboard
-                .padding([.top, .bottom])
-            Form {
-                TextField("Name", text: $name)
+        GeometryReader { geo in
+            VStack {
+                if geo.size.height > geo.size.width {
+                    VStack {
+                        PhotoView(self)
+                    }
+                } else {
+                    HStack {
+                        PhotoView(self)
+                    }
+                }
+    
+                Button("Save") {
+                    save()
+                }
+                .padding()
             }
-            
-            Button("Save") {
-                save()
-            }
-            .padding()
         }
     }
     
@@ -60,5 +82,6 @@ struct AddPhotoView: View {
 struct AddPhotoView_Previews: PreviewProvider {
     static var previews: some View {
         AddPhotoView(photo: UIImage(systemName: "person"))
+            .previewInterfaceOrientation(.portrait)
     }
 }

@@ -13,8 +13,8 @@ struct DetailView: View {
     
     var body: some View {
         GeometryReader {geo in
-            let hSize = geo.frame(in: .global).height // not good
-            let vSize = geo.frame(in: .global).width // not good
+            let hSize = geo.size.height // not good
+            let vSize = geo.size.width // not good
             VStack {
                 Image(uiImage: currentPhoto.image)
                     .resizable()

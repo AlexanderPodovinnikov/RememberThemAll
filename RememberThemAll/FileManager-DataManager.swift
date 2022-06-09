@@ -38,10 +38,11 @@ struct DataManager {
         let savePath = FileManager.documentsDirectory.appendingPathComponent(path, isDirectory: false)
         
         if FileManager.default.fileExists(atPath: savePath.path) {
+            //print("Yes, I've got him!")
             do {
                 try FileManager.default.removeItem(at: savePath)
             } catch {
-                print("Cannot delete file for some reason")
+                //print("Cannot delete file for some reason")
             }
         }
     }
