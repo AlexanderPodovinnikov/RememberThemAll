@@ -10,6 +10,7 @@ import CoreData
 
 struct FilteredPeople: View {
     @FetchRequest var fetchRequest: FetchedResults<Photo>
+    @Environment(\.managedObjectContext) var moc
     
     init(filter: String) {
         if filter.isEmpty {
@@ -26,11 +27,12 @@ struct FilteredPeople: View {
                     .foregroundColor(.secondary)
             } else {
                 ForEach(fetchRequest, id:\.name) {photo in
+                    let curentImage = DataManager.load(from: photo.wrappedFilename)
                     NavigationLink {
-                        DetailView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: DataManager.load(from: photo.wrappedFilename)))
+                        DetailView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: curentImage))
                     } label: {
                         HStack {
-                            Image(uiImage: DataManager.load(from: photo.wrappedFilename))
+                            Image(uiImage: curentImage)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
@@ -40,29 +42,27 @@ struct FilteredPeople: View {
                         }
                     }
                 }
-//                .onDelete(perform: deletePhotos)
+                .onDelete(perform: deletePhotos)
             }
         }
     }
-//        func deletePhotos(at offsets: IndexSet) {
-//            for offset in offsets {
-//                let photo = fetchRequest[offset]
-//                moc.delete(photo)
-//
-//                // how to remove image file?
-//
-//                if moc.hasChanges {
-//                    try? moc.save()
-//                }
-//            }
-//        }
-    
+    func deletePhotos(at offsets: IndexSet) {
+        
+        for offset in offsets {
+            let photo = fetchRequest[offset]
+            DataManager.erase(path: photo.wrappedFilename)
+            moc.delete(photo)
+            if moc.hasChanges {
+                try? moc.save()
+            }
+        }
+    }
 }
 
-//struct filteredPeople_Previews: PreviewProvider {
-//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-//
-//    static var previews: some View {
-//        FilteredPeople(filter: "A")
-//    }
-//}
+struct filteredPeople_Previews: PreviewProvider {
+    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+
+    static var previews: some View {
+        FilteredPeople(filter: "")
+    }
+}

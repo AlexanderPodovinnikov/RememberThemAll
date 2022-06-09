@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 extension FileManager {
     static var documentsDirectory: URL {
@@ -35,6 +35,14 @@ struct DataManager {
     }
     
     static func erase(path: String) {
-        //TODO
+        let savePath = FileManager.documentsDirectory.appendingPathComponent(path, isDirectory: false)
+        
+        if FileManager.default.fileExists(atPath: savePath.path) {
+            do {
+                try FileManager.default.removeItem(at: savePath)
+            } catch {
+                print("Cannot delete file for some reason")
+            }
+        }
     }
 }

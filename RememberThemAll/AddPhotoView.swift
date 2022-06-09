@@ -20,7 +20,7 @@ struct AddPhotoView: View {
             Image(uiImage: photo!)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 350, height: 350)
+                .frame(width: 250, height: 250) //TODO Size, textfield when keyboard
                 .padding([.top, .bottom])
             Form {
                 TextField("Name", text: $name)
@@ -45,7 +45,11 @@ struct AddPhotoView: View {
         let filename = UUID().uuidString
         newPhoto.name = name
         newPhoto.filename = filename
-        try? moc.save()
+        
+        if moc.hasChanges {
+            try? moc.save()
+        }
+        
         if let photo = photo {
             DataManager.save(image: photo, to: filename)
         }

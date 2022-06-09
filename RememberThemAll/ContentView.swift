@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-//    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)], predicate: nil) var people: FetchedResults<Photo>
     
     @State var newImage: UIImage?
     @State var isShowingImagePicker = false
@@ -48,19 +47,6 @@ struct ContentView: View {
             }
         }
     }
-    
-//    func deletePhotos(at offsets: IndexSet) {
-//        for offset in offsets {
-//            let photo = people[offset]
-//            moc.delete(photo)
-//
-//            // how to remove image file?
-//
-//            if moc.hasChanges {
-//                try? moc.save()
-//            }
-//        }
-//    }
 }
 
 struct ContentView_Previews: PreviewProvider {
