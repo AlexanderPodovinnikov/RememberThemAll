@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var isShowingImagePicker = false
     @State var isShowingAddView = false
     @State var searchText = ""
+    @State var sourceType = UIImagePickerController.SourceType.photoLibrary
     
     var body: some View {
         NavigationView {
@@ -24,18 +25,23 @@ struct ContentView: View {
             .navigationTitle("Who Are Them All?")
             .navigationBarItems(trailing:
                 HStack {
-//                    Image(systemName: "magnifyingglass")
-//                    TextField("Search for...", text: $searchText)
-                    
                     Button {
+                        sourceType = .camera
                         isShowingImagePicker.toggle()
                     } label: {
-                        Image(systemName: "plus")
+                        Image(systemName: "camera")
+                    }
+                    
+                    Button {
+                        sourceType = .photoLibrary
+                        isShowingImagePicker.toggle()
+                    } label: {
+                        Image(systemName: "photo")
                     }
                 }
             )
             .sheet(isPresented: $isShowingImagePicker) {
-                ImagePicker(image: $newImage)
+                ImagePickerView(image: $newImage, sourceType: sourceType)
             }
             .sheet(isPresented: $isShowingAddView) {
                 AddPhotoView(photo: newImage)
