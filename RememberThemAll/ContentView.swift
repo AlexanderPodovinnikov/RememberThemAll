@@ -6,37 +6,46 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
-    @State var newImage: UIImage?
-    @State var isShowingImagePicker = false
-    @State var isShowingAddView = false
-    @State var searchText = ""
-    @State var sourceType = UIImagePickerController.SourceType.photoLibrary
+    @State private var newImage: UIImage?
+    @State private var isShowingImagePicker = false
+    @State private var isShowingAddView = false
+    @State private var searchText = ""
+    @State private var sourceType = UIImagePickerController.SourceType.photoLibrary
+    
+    @State private var location: CLLocationCoordinate2D?
+    
+    let locationFetcher = LocationFetcher()
     
     var body: some View {
         NavigationView {
             VStack {
                 FilteredPeople(filter: searchText)
                     .searchable(text: $searchText)
+                    .navigationTitle("Who Are Them All?")
             }
-            .navigationTitle("Who Are Them All?")
+            
             .navigationBarItems(trailing:
                 HStack {
                     Button {
-                        sourceType = .camera
-                        isShowingImagePicker.toggle()
-                    } label: {
-                        Image(systemName: "camera")
-                    }
-                    
-                    Button {
                         sourceType = .photoLibrary
+                        fetchLocation()
                         isShowingImagePicker.toggle()
                     } label: {
                         Image(systemName: "photo")
+                    }
+                    
+                    Button {
+                        sourceType = .camera
+                        fetchLocation()
+                        isShowingImagePicker.toggle()
+                    } label: {
+                        Image(systemName: "camera")
                     }
                 }
             )
@@ -44,13 +53,21 @@ struct ContentView: View {
                 ImagePickerView(image: $newImage, sourceType: sourceType)
             }
             .sheet(isPresented: $isShowingAddView) {
-                AddPhotoView(photo: newImage)
+                AddPhotoView(photo: newImage, location: location)
             }
             .onChange(of: newImage) { image in
                 if image != nil {
                     isShowingAddView.toggle()
                 }
             }
+        }
+    }
+    
+    func fetchLocation() {
+        if let location = self.locationFetcher.lastKnownLocation {
+            self.location = location
+        } else {
+            self.location = nil
         }
     }
 }

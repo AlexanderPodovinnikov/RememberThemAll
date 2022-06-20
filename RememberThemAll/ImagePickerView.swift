@@ -3,7 +3,7 @@
 //  RememberThemAll
 //
 //  Created by Alex Po on 12.06.2022.
-//
+//  Mainly for using camera
 
 import SwiftUI
 import UIKit
@@ -19,22 +19,23 @@ struct ImagePickerView: UIViewControllerRepresentable {
         }
         
         // method required by the protocol
-        func picker(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let image = info[.originalImage] as? UIImage else { return }
-            self.parent.image = image
-            self.parent.isPresented.wrappedValue.dismiss()
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true)
+            print("Got something")
+            guard let selectedImage = info[.originalImage] as? UIImage else { return }
+            self.parent.image = selectedImage
+            print("It's an Image!")
         }
     }
     
     @Binding var image: UIImage?
-    var sourceType: UIImagePickerController.SourceType
-    @Environment(\.presentationMode) var isPresented
-    
+    @State var sourceType: UIImagePickerController.SourceType
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
                
         let picker = UIImagePickerController()
         picker.sourceType = self.sourceType
+        picker.delegate = context.coordinator
                 
         return picker
     }

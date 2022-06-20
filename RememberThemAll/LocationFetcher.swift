@@ -15,6 +15,7 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         manager.delegate = self
+        start() //?
     }
 
     func start() {

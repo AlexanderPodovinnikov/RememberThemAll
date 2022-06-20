@@ -3,7 +3,7 @@
 //  RememberThemAll
 //
 //  Created by Alex Po on 05.06.2022.
-//
+//  It will be needed when UIImagePickerController stops fetching photos from album
 
 import SwiftUI
 import PhotosUI

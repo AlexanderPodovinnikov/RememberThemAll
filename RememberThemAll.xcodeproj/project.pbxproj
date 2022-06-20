@@ -21,6 +21,7 @@
 		168B5C802846239000C99A2B /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C7E2846239000C99A2B /* Photo+CoreDataProperties.swift */; };
 		168B5C82284630F900C99A2B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C81284630F900C99A2B /* DataController.swift */; };
 		168B5C84284698B300C99A2B /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B5C83284698B300C99A2B /* AddPhotoView.swift */; };
+		16C804362858E744003E0817 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C804352858E743003E0817 /* MapView.swift */; };
 		16E53FBF285531C800E815A4 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E53FBE285531C800E815A4 /* LocationFetcher.swift */; };
 		16E53FC12856870200E815A4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E53FC02856870200E815A4 /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		168B5C7E2846239000C99A2B /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		168B5C81284630F900C99A2B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		168B5C83284698B300C99A2B /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
+		16C804352858E743003E0817 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		16E53FBE285531C800E815A4 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		16E53FC02856870200E815A4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				166DF762284E66750015C16C /* FileManager-DataManager.swift */,
 				16E53FBE285531C800E815A4 /* LocationFetcher.swift */,
 				168B5C83284698B300C99A2B /* AddPhotoView.swift */,
+				16C804352858E743003E0817 /* MapView.swift */,
 				1681983A284CB574005490AF /* ImagePicker.swift */,
 				16E53FC02856870200E815A4 /* ImagePickerView.swift */,
 				168B5C81284630F900C99A2B /* DataController.swift */,
@@ -180,6 +183,7 @@
 				16E53FC12856870200E815A4 /* ImagePickerView.swift in Sources */,
 				166DF767284F92E70015C16C /* DetailView.swift in Sources */,
 				166DF765284F907A0015C16C /* PresentedPhoto.swift in Sources */,
+				16C804362858E744003E0817 /* MapView.swift in Sources */,
 				166DF763284E66760015C16C /* FileManager-DataManager.swift in Sources */,
 				168B5C6D284620DE00C99A2B /* RememberThemAllApp.swift in Sources */,
 				168B5C7F2846239000C99A2B /* Photo+CoreDataClass.swift in Sources */,
@@ -323,10 +327,11 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera to make a photo of your new acquaintance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to geolocate you to mark the photo";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to Photo Library to import photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -359,10 +364,11 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera to make a photo of your new acquaintance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to geolocate you to mark the photo";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to Photo Library to import photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;

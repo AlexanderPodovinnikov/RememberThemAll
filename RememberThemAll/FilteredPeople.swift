@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CoreLocation
 
 struct FilteredPeople: View {
     @FetchRequest var fetchRequest: FetchedResults<Photo>
@@ -29,7 +30,7 @@ struct FilteredPeople: View {
                 ForEach(fetchRequest, id:\.name) {photo in
                     let curentImage = DataManager.load(from: photo.wrappedFilename)
                     NavigationLink {
-                        DetailView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: curentImage))
+                        DetailView(currentPhoto: PresentedPhoto(name: photo.wrappedName, image: curentImage, latitude: photo.latitude, longitude: photo.longitude))
                     } label: {
                         HStack {
                             Image(uiImage: curentImage)
