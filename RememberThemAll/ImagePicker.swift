@@ -3,7 +3,7 @@
 //  RememberThemAll
 //
 //  Created by Alex Po on 05.06.2022.
-//
+//  It will be needed when UIImagePickerController stops fetching photos from album
 
 import SwiftUI
 import PhotosUI
@@ -13,6 +13,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
         var parent: ImagePicker
         
+        
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
@@ -20,6 +21,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         // method required by the protocol
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
+            
             
             guard let provider = results.first?.itemProvider else { return }
             if provider.canLoadObject(ofClass: UIImage.self) {
@@ -31,14 +33,14 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     @Binding var image: UIImage?
-    
+       
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
         
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
-        
+                
         return picker
     }
     
